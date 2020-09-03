@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Desafio Menu</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+         body {
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #FFF;
+            font-family: 'Oswald', 'Times New Roman', Times, serif;
+            font-size: 1.5em;
+            padding: 10px;
+        }
+
+        .cabecalho {
+            position: relative;
+            padding: 5px;
+            background-color: rgb(25, 25, 27);
+            width: 100%;
+            height: 10vh;
+            border-bottom: 1vh solid rgb(63, 157, 245);
+        }
+
+        .logo {
+            height: 4vh;
+            margin-top: 0.5vw;
+        }
+
+        .logo img {
+           height: 100%;
+       }
+
+        .menu {
+            position: absolute;
+            left: 20vw;
+            top: 3vh;
+            white-space: nowrap;
+        }
+
+
+        .menu li {
+            display: inline;
+            padding: 0px 15px;
+        }
+
+        .menu a:hover, .ativo {
+            background-color: rgb(63, 157, 245);
+            color: #000;
+        }
+
+
+        .autenticacao {
+            position: absolute;
+            right: 2vw;
+            top: 3vh;
+        }
+
+        .autenticacao>a {
+            padding: 1vh 15px;
+        }
+
+        .botao {
+           border-radius: 30px;
+           padding: 10px 25px;
+           margin: 10px;
+       }
+
+       .destaque {
+           background-color: #F40A31;
+           color: #FFF;
+       }
+
+        .logo,
+        .menu,
+        .menu ul,
+        .menu li,
+        .autenticacao {
+            display: inline-block;
+        }
+
+        .menu-toggle {
+            margin: 25px;
+            float: right;
+            display: none;
+            top: 3vh;
+        }
+
+        @media (max-width: 1250px) {
+            .menu {
+                left: 30vw;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .autenticacao {
+                display: none;
+            }
+        }
+
+        @media (max-width: 850px) {
+            .logo, .menu {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+
+        @media (max-height: 600px) {
+            .cabecalho {
+                height: 15vh;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="cabecalho">
+        <div class="logo">
+            <a href="#inicio">
+                <img src="http://files.cod3r.com.br/curso-web/logo.png" alt="Logo" />
+            </a>
+        </div>
+        <button class="menu-toggle">
+            <i class="fa fa-lg fa-bars"></i>
+        </button>
+        <nav class="menu">
+            <ul>
+                <li>
+                    <a href="#inicio">Início</a>
+                </li>
+                <li>
+                    <a href="#cursos">Cursos</a>
+                </li>
+                <li>
+                    <a href="#sobre">Sobre</a>
+                </li>
+                <li>
+                    <a href="#contato">Contato</a>
+                </li>
+            </ul>
+        </nav>
+        <aside class="autenticacao">
+            <a href="#login">Login</a>
+            <a href="#registar" class="botao destaque">Registrar</a>
+        </aside>
+    </header>
+
+    <script>
+         window.onpopstate = function (e) {
+            var ativo = document.querySelector('.ativo');
+            if(ativo != null) {
+                ativo.classList.remove("ativo");
+            }
+
+            const elemento = document.querySelectorAll(`a[href="${ window.location.hash}"]`);
+            if (window.location.hash == '#inicio') {
+                elemento[1].classList.add("ativo");
+            } else {
+                elemento[0].classList.add("ativo");
+            }
+
+        };
+    </script>
+</body>
+
+</html>
